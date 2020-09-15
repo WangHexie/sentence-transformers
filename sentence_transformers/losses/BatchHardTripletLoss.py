@@ -118,7 +118,7 @@ class BatchHardTripletLoss(nn.Module):
 
         # We put to 0 any element where (a, p) is not valid (valid if a != p and label(a) == label(p))
         anchor_positive_dist = mask_anchor_positive * pairwise_dist
-        
+        print("labels", labels)
         print("pairwise_dist", pairwise_dist)
         print("mask_anchor_positive", mask_anchor_positive)
         print("anchor_positive_dist", anchor_positive_dist)
