@@ -120,10 +120,10 @@ class BatchHardTripletLoss(nn.Module):
 
         # We put to 0 any element where (a, p) is not valid (valid if a != p and label(a) == label(p))
         anchor_positive_dist = mask_anchor_positive * pairwise_dist
-        print("labels", labels)
-        print("pairwise_dist", pairwise_dist)
-        print("mask_anchor_positive", mask_anchor_positive)
-        print("anchor_positive_dist", anchor_positive_dist)
+#         print("labels", labels)
+#         print("pairwise_dist", pairwise_dist)
+#         print("mask_anchor_positive", mask_anchor_positive)
+#         print("anchor_positive_dist", anchor_positive_dist)
 
         # shape (batch_size, 1)
         hardest_positive_dist, _ = anchor_positive_dist.max(1, keepdim=True)
@@ -142,9 +142,9 @@ class BatchHardTripletLoss(nn.Module):
         # Combine biggest d(a, p) and smallest d(a, n) into final triplet loss
         tl = hardest_positive_dist - hardest_negative_dist + self.triplet_margin
         
-        print("tl", tl)
-        print("hardest_positive_dist:", hardest_positive_dist)
-        print("hardest_negative_dist:", hardest_negative_dist)
+#         print("tl", tl)
+#         print("hardest_positive_dist:", hardest_positive_dist)
+#         print("hardest_negative_dist:", hardest_negative_dist)
         
         tl[tl < 0] = 0
         triplet_loss = tl.mean()
