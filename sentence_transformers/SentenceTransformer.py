@@ -368,7 +368,7 @@ class SentenceTransformer(nn.Sequential):
         paired_texts = [[] for _ in range(num_texts)]
         max_seq_len = [0] * num_texts
         for tokens, label in batch:
-            lables = lables + [label] * num_texts
+            labels = labels + [label] * num_texts
             # labels.append(label)
             for i in range(num_texts):
                 paired_texts[i].append(tokens[i])
